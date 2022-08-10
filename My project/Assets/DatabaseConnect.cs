@@ -34,6 +34,8 @@ public class DatabaseConnect : MonoBehaviour
         dbconn.Close();
         dbconn = null;
 
+        print("start");
+
     }
 
     public InputField std_fn;
@@ -68,6 +70,6 @@ public class DatabaseConnect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //print("hi");
     }
 }
