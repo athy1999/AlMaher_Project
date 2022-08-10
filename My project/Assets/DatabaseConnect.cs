@@ -4,20 +4,26 @@ using UnityEngine;
 using System;
 using System.Data;
 using Mono.Data.Sqlite;
+using UnityEngine.UI;
 
 public class DatabaseConnect : MonoBehaviour
 {
+    String sqlQuery = null;
+    string conn;
+    IDbConnection dbconn;
+    IDbCommand dbcmd;
+    IDataReader reader;
     // Start is called before the first frame update
     void Start()
     {
-        string conn = "URI=file:" + Application.dataPath + "/Database1.db"; //Path to database.
-        IDbConnection dbconn = (IDbConnection) new SqliteConnection(conn);
+        conn = "URI=file:" + Application.dataPath + "/Database1.db"; //Path to database.
+        dbconn = (IDbConnection) new SqliteConnection(conn);
         dbconn.Open(); //Open connection to the database.
-        IDbCommand dbcmd = dbconn.CreateCommand();
+        dbcmd = dbconn.CreateCommand();
         ////
-        IDataReader reader = null;
-        String sqlQuery = null;
-        sqlQuery = "CREATE TABLE IF NOT EXISTS student (SSN INTEGER PRIMARY KEY, classid INTEGER  , First name TEXT NOT NULL,Last name TEXT NOT NULL, ParentsPhone number TEXT NOT NULL,FOREIGN KEY(classid) REFERENCES class (classID) ON DELETE CASCADE ON UPDATE NO ACTION); ";
+        reader = null;
+        
+        sqlQuery = "CREATE TABLE IF NOT EXISTS student (SSN INTEGER PRIMARY KEY, classid INTEGER  , First_name TEXT NOT NULL,Last_name TEXT NOT NULL, ParentsPhone number TEXT NOT NULL,FOREIGN KEY(classid) REFERENCES class (classID) ON DELETE CASCADE ON UPDATE NO ACTION); ";
         dbcmd.CommandText = sqlQuery;
         reader = dbcmd.ExecuteReader();
         ////
@@ -28,23 +34,35 @@ public class DatabaseConnect : MonoBehaviour
         dbconn.Close();
         dbconn = null;
 
-        //void Addstudent()
-        //{
+    }
 
-        //    sqlQuery = "INSERT INTO student
-        //                + "VALUES(" + id + ", " + fn + ", " + ln + "," + phone + "); ";
-        //    dbcmd.CommandText = sqlQuery;
-        //    reader = dbcmd.ExecuteReader();
-        //public InputField std_fn;
-        //public InputField std_ln;
-        //public InputField std_id;
-        //public InputField phn;
-        //    var fn = gameObject.GetComponent<std_fn>();
-        //    var ln = gameObject.GetComponent<std_ln>();
-        //    var id = gameObject.GetComponent<std_id>();
-        //    var phone = gameObject.GetComponent<phn>();
+    public InputField std_fn;
+    public InputField std_ln;
+    public InputField std_id;
+    public InputField phn;
 
-        //}
+
+    public void Addstudent()
+    {
+        var fn = std_fn.text;
+        var ln = std_ln.text;
+        var id = std_id.text;
+        var phone = phn.text ;
+        print(fn + ln + id + phone);
+        sqlQuery = "INSERT INTO student (SSN,First_name,Last_name,ParentsPhone) VALUES(" + id + ", '" + fn + "', '" + ln + "','" + phone + "'); ";
+        dbconn = (IDbConnection)new SqliteConnection(conn);
+        dbconn.Open(); //Open connection to the database.
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = sqlQuery;
+        reader = dbcmd.ExecuteReader();
+
+
+        reader.Close();
+        reader = null;
+        dbcmd.Dispose();
+        dbcmd = null;
+        dbconn.Close();
+        dbconn = null;
     }
 
     // Update is called once per frame
