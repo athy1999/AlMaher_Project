@@ -552,8 +552,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10, y: 0}
-  m_SizeDelta: {x: -176.1695, y: 25.5933}
+  m_AnchoredPosition: {x: 28.2353, y: 10.6373}
+  m_SizeDelta: {x: -474.013, y: -71.6616}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &446302558
 MonoBehaviour:
@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 505366833}
   - component: {fileID: 505366832}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1014,7 +1014,7 @@ GameObject:
   - component: {fileID: 984728100}
   - component: {fileID: 984728099}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1157,7 +1157,7 @@ GameObject:
   - component: {fileID: 998701871}
   - component: {fileID: 998701870}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button(back)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1278,7 +1278,7 @@ GameObject:
   - component: {fileID: 1060634672}
   - component: {fileID: 1060634671}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: NumberofS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1465,7 +1465,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ebcbd333ae665ed4084d2fa2d8385b3c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a95a658ab9cd0454bb105eaaaa55acad, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
